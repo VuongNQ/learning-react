@@ -27,6 +27,8 @@ function App() {
   }, [weight, height])
   //BMI từ 18,5 den 24,9 bình thường
   //BMI tu 25 den 30 là thừa cân 
+  // Nếu tính độ chuẩn của BMI thì vd: 1m72 (lấy 72 nhân với 9 chia  cho 10)
+  // => 1 người bình thường không chơi thể thao .
   return (
     <main>
       <h1>Project 7: BMI CALCULATOR</h1>
