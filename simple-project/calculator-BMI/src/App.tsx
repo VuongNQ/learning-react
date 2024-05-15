@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/*
+import { useMemo, useState } from "react";
+import "./styles.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const DEFAULT_WEIGHT = 50;
+const DEFAULT_HEIGHT = 150;
+
+export default function App() {
+  const [height, setHeight] = useState(DEFAULT_HEIGHT);
+  const [weight, setWeight] = useState(DEFAULT_WEIGHT);
+
+  function onHeightChange(event: { target: { value: any; }; }) {
+    const inputHeight = event.target.value;
+    setHeight(inputHeight);
+  }
+
+  function onWeightChange(event: { target: { value: any; }; }) {
+    const inputWeight = event.target.value;
+    setWeight(inputWeight);
+  }
+
+  const output = useMemo(() => {
+    const calculatedHeight = height / 100;
+    return (weight / (calculatedHeight * calculatedHeight)).toFixed(1);
+  }, [weight, height]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main>
+      <h1>Project 7: BMI CALCULATOR</h1>
+      <div className="input-section">
+        <p className="slider-output">Weight: {weight} kg</p>
+        <input
+          className="input-slider"
+          onChange={onWeightChange}
+          type="range"
+          step="1"
+          min="40"
+          max="220"
+        />
+        <p className="slider-output">Height: {height} cm</p>
+        <input
+          className="input-slider"
+          onChange={onHeightChange}
+          type="range"
+          min="140"
+          max="220"
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className="output-section">
+        <p>Your BMI is</p>
+        <p className="output">{output}</p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </main>
+  );
 }
-
-export default App
+*/
