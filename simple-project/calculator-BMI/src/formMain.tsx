@@ -38,6 +38,7 @@ function FormMani() {
       <button onClick={handleSend} className="send" type="submit">
         SEND
       </button>
+      {/* arrSend.map sẽ ra 1 mẫu .. và close nút X */}
        <div style={{ border: "1px solid black", marginTop: "2rem", borderRadius: "8px"}} >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", position: "relative"}} className="title-close">
         <h2 style={{ textAlign: "center" }} >Information</h2>
