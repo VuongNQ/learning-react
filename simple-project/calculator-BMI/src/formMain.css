@@ -1,0 +1,42 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+  height: 1200px;
+}
+input {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  width: 50%;
+  height: 30px;
+  padding-left: 0.5rem;
+}
+.Email {
+  display: flex;
+  flex-direction: column;
+}
+
+select {
+  margin-right: 0.5rem;
+}
+
+.send {
+  margin-top: 2rem;
+  width: 70%;
+  background-color: #ad7cf3;
+  color: azure;
+} 
+
+.Female, .Male {
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+label {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}

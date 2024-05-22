@@ -65,40 +65,14 @@ function App() {
 export default App;
 */
 
-import { useState } from "react";
-import { UseEffectName } from "./DemoEffect";
-
-function DemoUseEffect() {
-  const [index, setIndex] = useState(0);
-  const [folder, setFolder] = useState(false);
-  const StateList = index < UseEffectName.length - 1;
-  const handleClickNext = () => {
-    if (StateList) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
-  }
-  const handleShowDetails = () => {
-    setFolder(!folder)
-  }
-  const UseEffect = UseEffectName[index];
-  console.log(UseEffect)
+import FormMani from "./formMain";
+function App() {
+ 
   return (
-    <div>
-      <button onClick={handleClickNext} >Next</button>
-      <h2 style={{ display: "flex", alignItems: "center" }}>
-        <i>{UseEffect.name} </i>
-        by
-        <h3> {UseEffect.artist}</h3>
-      </h2>
-      <button onClick={handleShowDetails} >
-        {folder ? "hide" : "show"} details
-      </button>
-      {folder && <h2>{UseEffect.description}</h2>}
-      <img src={UseEffect.url} alt="hinh anh" />
-    </div>
+    <div className="container">
+      <FormMani/>
+    </div>   
   );
 }
 
-export default DemoUseEffect;
+export default App;
