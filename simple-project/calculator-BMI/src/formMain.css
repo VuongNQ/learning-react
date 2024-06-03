@@ -44,3 +44,14 @@ label {
 
   font-size: 1rem;
 }
+
+.Title {
+  display: flex;
+  align-items: baseline;
+}
+.Name-Title {
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  margin-left: -17rem;
+}
