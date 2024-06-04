@@ -12,61 +12,52 @@ interface Data {
 export const data: Data[] = [
   {
     id: 0,
-    name: "Ngo Van Quốc",
-    email: "ngovanquoc480@gmail.com",
-    address: "89A/3a, Đường Hỉ thượng lãng ổng",
-    packed: true
-  },
-  {
-    id: 0,
-    name: "Vothithuyduong",
-    email: "vothithuyduong2012@gmail.com",
-    address: "89A/3a, Đường Hỉ thượng lãng ổng",
+    name: "",
+    email: "",
+    address: "",
     packed: false
   },
-  {
-    id: 0,
-    name: "VanVoThuyKim",
-    email: "NgoVoThuyKim185@gmail.com",
-    address: "89A/3a, Đường Hỉ thượng lãng ổng",
-    packed: false
-  }
 ]
-let NextId = 3;
+let NextId = 1;
 function FormMain() {
   const [name, setName] = useState('');
-  const [num, setNum] = useState('');
+  const [email, setEmail] = useState('');
   const [first, setFirst] = useState('');
-  const [object, setObject] = useState(data);
+  const [arrayForm, setArrayForm] = useState(data);
   const handleSubmit = (e) => {
     e.preventDefault();
+
   }
   const handleInput = (e) => {
     setName(e.target.value)
   }
-  const handleInputNum = (e) => {
-    setNum(e.target.value)
+  const handleInputEmail = (e) => {
+    setEmail(e.target.value)
   }
   const handleInputFirst = (e) => {
     setFirst(e.target.value);
   }
-  const handleSend = ({ name }) => {
-    setName('')
-    setNum('')
-    setFirst('')
-    setObject([
-      ...object,
+  const handleSend = ({ name, email, first }) => {
+    setName('');
+    setEmail('');
+    setFirst('');
+    if (email === "") {
+      return "Succes";
+    }
+    setArrayForm([
+      ...arrayForm,
       {
         id: NextId++,
         name: name,
-        email: name,
-        address: name,
-        packed: false
+        email: email,
+        address: first,
+        packed: true,
       },
     ]);
+
   };
   const handleClose = (id) => {
-    setObject(object.filter(item => item.id !== id));
+    setArrayForm(arrayForm.filter(item => item.id !== id));
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -75,19 +66,20 @@ function FormMain() {
       <input
         type="text"
         autoComplete="off"
-        value={num}
+        value={name}
         name="Name"
-        onChange={handleInputNum}
+        onChange={handleInput}
         placeholder="Name"
       />
       <input
         type="text"
         autoComplete="off"
-        value={name}
+        value={email}
         name="email"
-        onChange={handleInput}
+        onChange={handleInputEmail}
         placeholder="Email"
       />
+
       <input
         type="text"
         autoComplete="off"
@@ -96,15 +88,15 @@ function FormMain() {
         onChange={handleInputFirst}
         placeholder="Address"
       />
-      <button onClick={() => handleSend({ name })} className="send" type="submit">
+      <button disabled={email === ""} onClick={() => handleSend({ name, email, first })} className="send" type="submit">
         SEND
       </button>
       <ul>
         {/* arrSend.map sẽ ra 1 mẫu .. và close nút X */}
-        {object.map((item, id) => {
+        {arrayForm.map((item, id) => {
           return (
-            <li className="Title" style={{ listStyle: "none"}} key={id}>
-               <div className="Name-Title">
+            <li className="Title" style={{ listStyle: "none" }} key={id}>
+              <div className="Name-Title">
                 <label className="Name" htmlFor="">
                   Name: {""}
                   <span>{item.name}</span>
@@ -113,11 +105,11 @@ function FormMain() {
                   Email: {""}
                   <span>{item.email}</span>
                 </label>
-                <label className="Name"  htmlFor="">
+                <label className="Name" htmlFor="">
                   Address: {""}
                   <span>{item.address}</span>
                 </label>
-               </div>
+              </div>
               <button onClick={() => handleClose(item.id)} >X</button>
             </li>
           );

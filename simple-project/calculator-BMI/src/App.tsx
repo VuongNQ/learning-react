@@ -66,23 +66,11 @@ export default App;
 */
 
 import FormMani from "./formMain";
-import BaiTapState1 from "./baitapState1";
-import BaiTapState2 from "./baitapState2";
-import BaiTapState3 from "./baitapSate3";
-import Challenges1 from "./Challenges1";
-import Challenges2 from "./Chanllenges2";
-import Panel from "./ChanllengesIf/panel";
 function App() {
  
   return (
     <div className="container">
       <FormMani/>
-      <BaiTapState1/>
-      <BaiTapState2/>
-      <BaiTapState3/>
-      <Challenges1/>
-      <Challenges2/>
-      <Panel />
     </div>   
   );
 }
