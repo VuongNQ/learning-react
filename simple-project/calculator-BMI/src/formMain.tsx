@@ -1,42 +1,29 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import './formMain.css';
+import InputDisable from "./inputDisable";
+import InputOnchange from "./inputOnchange";
+import { data } from "./form";
+import { Data } from "./form";
 
-interface Data {
-  id: number
-  name: string
-  email: string
-  address: string
-  packed: boolean
-}
-
-export const data: Data[] = [
-  {
-    id: 0,
-    name: "quoc",
-    email: "ngovanquoc480@gmail.com ",
-    address: "89A/3a, Đường Hải thượng lãng ông",
-    packed: false
-  },
-]
 let NextId = 1;
 function FormMain() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [first, setFirst] = useState('');
   const [arrayForm, setArrayForm] = useState(data);
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
   }
-  const handleInput = (e) => {
+  const handleInput = (e: { target: { value: SetStateAction<string>; }; }) => {
     setName(e.target.value)
   }
-  const handleInputEmail = (e) => {
+  const handleInputEmail = (e: { target: { value: SetStateAction<string>; }; }) => {
     setEmail(e.target.value)
   }
-  const handleInputFirst = (e) => {
+  const handleInputFirst = (e: { target: { value: SetStateAction<string>; }; }) => {
     setFirst(e.target.value);
   }
-  const handleSend = ({ name, email, first }) => {
+  const handleSend = ({ name, email, first }: Data) => {
     setName('');
     setEmail('');
     setFirst('');
@@ -54,51 +41,31 @@ function FormMain() {
         name: name,
         email: email,
         address: first,
+        first: first,
         packed: true,
       },
     ]);
 
   };
-  const handleClose = (id) => {
+  const ArrayForm = arrayForm.length !== 3;
+  const handleClose = (id: number) => {
     setArrayForm(arrayForm.filter(item => item.id !== id));
   }
   return (
     <form onSubmit={handleSubmit}>
       <h1>Personal Information Form</h1>
       {
-        arrayForm.length !== 3 ? (
-          <>
-            <input
-              type="text"
-              autoComplete="off"
-              value={name}
-              name="Name"
-              onChange={handleInput}
-              placeholder="Name"
-            />
-            <input
-              type="text"
-              autoComplete="off"
-              value={email}
-              name="email"
-              onChange={handleInputEmail}
-              placeholder="Email"
-            />
-            <input
-              type="text"
-              autoComplete="off"
-              value={first}
-              name="FirstName"
-              onChange={handleInputFirst}
-              placeholder="Address"
-            />
-          </>
+        ArrayForm ? (
+          <InputOnchange
+            name={name}
+            handleInput={handleInput}
+            email={email}
+            handleInputEmail={handleInputEmail}
+            first={first}
+            handleInputFirst={handleInputFirst}
+          />
         ) : (
-          <>
-            <input type="text" value={name} disabled placeholder="Name" />
-            <input type="text" value={email} disabled placeholder="Address" />
-            <input type="text" value={first} disabled placeholder="FirstName" />
-          </>
+          <InputDisable name={"name"} email={"email"} first={"email"} />
         )
       }
       <button disabled={email === ""} onClick={() => handleSend({ name, email, first })} className="send" type="submit">
@@ -106,7 +73,7 @@ function FormMain() {
       </button>
       <ul>
         {
-          arrayForm.length !== 3 ? (
+         ArrayForm ? (
             arrayForm.map((item, id) => {
               return (
                 <li className="Title" style={{ listStyle: "none" }} key={id}>
