@@ -17,11 +17,6 @@ input {
   display: flex;
   flex-direction: column;
 }
-.error {
-  color: red;
-  margin-right: 22rem;
-  
-}
 select {
   margin-right: 0.5rem;
 }
@@ -31,9 +26,10 @@ select {
   width: 70%;
   background-color: #ad7cf3;
   color: azure;
-} 
+}
 
-.Female, .Male {
+.Female,
+.Male {
   padding-left: 2rem;
   display: flex;
   flex-direction: row-reverse;
@@ -41,7 +37,7 @@ select {
 }
 
 label {
-
+  margin-bottom: 10px;
   font-size: 1rem;
 }
 
@@ -52,6 +48,7 @@ label {
 .Name-Title {
   display: flex;
   flex-direction: column;
-  padding: 22px;
-  margin-left: -17rem;
+  padding: 24px;
+  border-radius:  8px;
+  margin-bottom: 1rem;
 }
