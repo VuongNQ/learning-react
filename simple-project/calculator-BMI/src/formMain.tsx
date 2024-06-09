@@ -1,8 +1,5 @@
 import { SetStateAction, useState } from "react";
 import { data, Data } from "./form";
-import InputDisable from "./inputDisable";
-import InputOnchange from "./inputOnchange";
-import RenderResultForm from "./renderResultForm";
 import './formMain.css';
 
 let NextId = 1;
