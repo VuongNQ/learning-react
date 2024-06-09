@@ -10,7 +10,6 @@ function FormMain() {
   const [home, setHome] = useState('');
   const [date, setDate] = useState('');
   const [mobile, setMobile] = useState('');
-  const [isActive, setIsActive] = useState(false);
   const [arrayForm, setArrayForm] = useState(data);
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
