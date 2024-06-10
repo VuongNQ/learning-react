@@ -48,11 +48,6 @@ function FormMain() {
     setHome("");
     setDate("");
     setMobile("");
-    if (email === "") {
-      return "Success";
-    } else if (arrayForm.length === 3) {
-      return "disable"
-    }
     setArrayForm([
       ...arrayForm,
       {
