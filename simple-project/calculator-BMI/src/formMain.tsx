@@ -125,7 +125,7 @@ function FormMain() {
       />
 
       <button
-        disabled={email === ""}
+        disabled={email === ""  || arrayForm.length === 3 }
         onClick={() =>
           handleSend({ id: 1, name, email, address, home, date, mobile })
         }
