@@ -65,11 +65,12 @@ function FormMain() {
   const handleClose = (id: number) => {
     setArrayForm(arrayForm.filter((item) => item.id !== id));
   };
+  const isDisable = arrayForm.length === 3;
   return (
     <form onSubmit={handleSubmit}>
       <h1>Personal Information Form</h1>
       <input
-        disabled={arrayForm.length === 3}
+        disabled={isDisable}
         type="text"
         autoComplete="off"
         value={name}
@@ -78,7 +79,7 @@ function FormMain() {
         placeholder="First"
       />
       <input
-        disabled={arrayForm.length === 3}
+        disabled={isDisable}
         type="date"
         autoComplete="off"
         value={date}
@@ -87,7 +88,7 @@ function FormMain() {
         placeholder="Date of Birth"
       />
       <input
-        disabled={arrayForm.length === 3}
+        disabled={isDisable}
         type="text"
         autoComplete="off"
         value={email}
@@ -96,7 +97,7 @@ function FormMain() {
         placeholder="Email"
       />
       <input
-        disabled={arrayForm.length === 3}
+        disabled={isDisable}
 
         type="text"
         autoComplete="off"
@@ -106,7 +107,7 @@ function FormMain() {
         placeholder="Address"
       />
       <input
-        disabled={arrayForm.length === 3}
+        disabled={isDisable}
         type="text"
         autoComplete="off"
         value={home}
@@ -115,7 +116,7 @@ function FormMain() {
         placeholder="Home Telephone Number"
       />
       <input
-        disabled={arrayForm.length === 3}
+        disabled={isDisable}
         type="text"
         autoComplete="off"
         value={mobile}
@@ -125,7 +126,7 @@ function FormMain() {
       />
 
       <button
-        disabled={email === ""  || arrayForm.length === 3 }
+        disabled={email === ""  || isDisable }
         onClick={() =>
           handleSend({ id: 1, name, email, address, home, date, mobile })
         }
@@ -149,7 +150,7 @@ function FormMain() {
                 >
                   <h5 style={{ marginLeft: "12rem" }}>Infomation</h5>
                   <button
-                    disabled={arrayForm.length === 3}
+                    disabled={isDisable}
                     style={{ marginLeft: "9rem" }}
                     onClick={() => handleClose(item.id)}
                   >
