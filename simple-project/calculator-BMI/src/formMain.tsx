@@ -1,5 +1,11 @@
 import { SetStateAction, useState } from "react";
 import "./formMain.css";
+import ResetInputName from "./ResetInput/resetInputName";
+import ResetInputDate from "./ResetInput/resetInputDate";
+import ResetInputEmail from "./ResetInput/resetInputEmail";
+import ResetInputAddress from "./ResetInput/resetInputAddress";
+import ResetInputHome from "./ResetInput/resetInputHome";
+import ResetInputMobile from "./ResetInput/resetInputMobile";
 
 let NextId = 1;
 function FormMain() {
@@ -69,64 +75,14 @@ function FormMain() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Personal Information Form</h1>
-      <input
-        disabled={isDisable}
-        type="text"
-        autoComplete="off"
-        value={name}
-        name="Name"
-        onChange={handleInput}
-        placeholder="First"
-      />
-      <input
-        disabled={isDisable}
-        type="date"
-        autoComplete="off"
-        value={date}
-        name="Name"
-        onChange={handleInputDate}
-        placeholder="Date of Birth"
-      />
-      <input
-        disabled={isDisable}
-        type="text"
-        autoComplete="off"
-        value={email}
-        name="email"
-        onChange={handleInputEmail}
-        placeholder="Email"
-      />
-      <input
-        disabled={isDisable}
-
-        type="text"
-        autoComplete="off"
-        value={address}
-        name="FirstName"
-        onChange={handleInputAddress}
-        placeholder="Address"
-      />
-      <input
-        disabled={isDisable}
-        type="text"
-        autoComplete="off"
-        value={home}
-        name="home"
-        onChange={handleInputHome}
-        placeholder="Home Telephone Number"
-      />
-      <input
-        disabled={isDisable}
-        type="text"
-        autoComplete="off"
-        value={mobile}
-        name="home"
-        onChange={handleInputMobile}
-        placeholder="Mobile Number"
-      />
-
+      <ResetInputName disabled={isDisable} name={name} handleInput={handleInput} />
+      <ResetInputDate disabled={isDisable} date={date} handleInputDate={handleInputDate} />
+      <ResetInputEmail disabled={isDisable} email={email} handleInputEmail={handleInputEmail} />
+      <ResetInputAddress disabled={isDisable} address={address} handleInputAddress={handleInputAddress} />
+      <ResetInputHome disabled={isDisable} home={home} handleInputHome={handleInputHome} />
+      <ResetInputMobile disabled={isDisable} mobile={mobile} handleInputMobile={handleInputMobile} />
       <button
-        disabled={email === ""  || isDisable }
+        disabled={email === "" || isDisable}
         onClick={() =>
           handleSend({ id: 1, name, email, address, home, date, mobile })
         }
