@@ -70,7 +70,6 @@ function FormMain() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Personal Information Form</h1>
-      {/* {ResetInputFull} */}
       <InputForm disabled={isDisable} value={name} type="text" onChange={handleInput} name="name"/>
       <InputForm disabled={isDisable} value={date} type="date" onChange={handleInputDate} name="date of birth"/>
       <InputForm disabled={isDisable} value={home} type="text" onChange={handleInputHome} name="home"/>
@@ -78,7 +77,6 @@ function FormMain() {
       <InputForm disabled={isDisable} value={mobile} type="text" onChange={handleInputMobile} name="mobile"/>
       <InputForm disabled={isDisable} value={address} type="text" onChange={handleInputAddress} name="address"
       />
-      {/* {ResetInputFull} */}
       <button
         disabled={email === "" || isDisable}
         onClick={() =>
