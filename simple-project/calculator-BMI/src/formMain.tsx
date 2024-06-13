@@ -1,11 +1,6 @@
 import { SetStateAction, useState } from "react";
 import "./formMain.css";
-import ResetInputName from "./ResetInput/resetInputName";
-import ResetInputDate from "./ResetInput/resetInputDate";
-import ResetInputEmail from "./ResetInput/resetInputEmail";
-import ResetInputAddress from "./ResetInput/resetInputAddress";
-import ResetInputHome from "./ResetInput/resetInputHome";
-import ResetInputMobile from "./ResetInput/resetInputMobile";
+import ResetInputFull from "./resetInputFull";
 
 let NextId = 1;
 function FormMain() {
@@ -75,12 +70,21 @@ function FormMain() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Personal Information Form</h1>
-      <ResetInputName disabled={isDisable} name={name} handleInput={handleInput} />
-      <ResetInputDate disabled={isDisable} date={date} handleInputDate={handleInputDate} />
-      <ResetInputEmail disabled={isDisable} email={email} handleInputEmail={handleInputEmail} />
-      <ResetInputAddress disabled={isDisable} address={address} handleInputAddress={handleInputAddress} />
-      <ResetInputHome disabled={isDisable} home={home} handleInputHome={handleInputHome} />
-      <ResetInputMobile disabled={isDisable} mobile={mobile} handleInputMobile={handleInputMobile} />
+      <ResetInputFull
+        disabled={isDisable}
+        name={name}
+        date={date}
+        address={address}
+        email={email}
+        home={home}
+        mobile={mobile}
+        handleInput={handleInput}
+        handleInputEmail={handleInputEmail}
+        handleInputDate={handleInputDate}
+        handleInputHome={handleInputHome}
+        handleInputMobile={handleInputMobile}
+        handleInputAddress={handleInputAddress}
+      />
       <button
         disabled={email === "" || isDisable}
         onClick={() =>
