@@ -1,6 +1,5 @@
 import { SetStateAction, useState } from "react";
 import "./formMain.css";
-import ResetInputFull from "./resetInputFull";
 
 let NextId = 1;
 function FormMain() {
@@ -70,21 +69,66 @@ function FormMain() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Personal Information Form</h1>
-      <ResetInputFull
-        disabled={isDisable}
-        name={name}
-        date={date}
-        address={address}
-        email={email}
-        home={home}
-        mobile={mobile}
-        handleInput={handleInput}
-        handleInputEmail={handleInputEmail}
-        handleInputDate={handleInputDate}
-        handleInputHome={handleInputHome}
-        handleInputMobile={handleInputMobile}
-        handleInputAddress={handleInputAddress}
+      <input
+        disabled={arrayForm.length === 3}
+        type="text"
+        autoComplete="off"
+        value={name}
+        name="Name"
+        onChange={handleInput}
+        placeholder="First"
       />
+      {/* {ResetInputFull} */}
+      <input
+        disabled={arrayForm.length === 3}
+        type="date"
+        autoComplete="off"
+        value={date}
+        name="Name"
+        onChange={handleInputDate}
+        placeholder="Date of Birth"
+      />
+      {/* {ResetInputFull} */}
+      <input
+        disabled={arrayForm.length === 3}
+        type="text"
+        autoComplete="off"
+        value={email}
+        name="email"
+        onChange={handleInputEmail}
+        placeholder="Email"
+      />
+      {/* {ResetInputFull} */}
+      <input
+        disabled={arrayForm.length === 3}
+        type="text"
+        autoComplete="off"
+        value={address}
+        name="FirstName"
+        onChange={handleInputAddress}
+        placeholder="Address"
+      />
+      {/* {ResetInputFull} */}
+      <input
+        disabled={arrayForm.length === 3}
+        type="text"
+        autoComplete="off"
+        value={home}
+        name="home"
+        onChange={handleInputHome}
+        placeholder="Home Telephone Number"
+      />
+      {/* {ResetInputFull} */}
+      <input
+        disabled={arrayForm.length === 3}
+        type="text"
+        autoComplete="off"
+        value={mobile}
+        name="home"
+        onChange={handleInputMobile}
+        placeholder="Mobile Number"
+      />
+      {/* {ResetInputFull} */}
       <button
         disabled={email === "" || isDisable}
         onClick={() =>
@@ -109,13 +153,14 @@ function FormMain() {
                   }}
                 >
                   <h5 style={{ marginLeft: "12rem" }}>Infomation</h5>
-                  <button
-                    disabled={isDisable}
-                    style={{ marginLeft: "9rem" }}
-                    onClick={() => handleClose(item.id)}
-                  >
-                    X
-                  </button>
+                  {isDisable ? null : (
+                    <button
+                      style={{ marginLeft: "9rem" }}
+                      onClick={() => handleClose(item.id)}
+                    >
+                      X
+                    </button>
+                  )}
                 </div>
                 <label className="Name" htmlFor="">
                   Name: {""}
