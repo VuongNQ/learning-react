@@ -1,12 +1,13 @@
-import { SyntheticEvent } from "react";
+import React from "react";
 
-interface IInputForm {
+interface InputTs {
   disabled?: boolean;
-  type: string;
+  type: "date" | "text";
   value: string | number;
-  onCHange: (e: SyntheticEvent) => void;
+  name: "name" | "address" | "date of birth" | "email" | "home" | "mobile";
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
-function ResetInputFull({ disabled, type, value, onCHange }: IInputForm) {
+function InputForm({ disabled, type, value, onChange }: InputTs) {
   return (
     <input
       disabled={disabled}
@@ -14,10 +15,10 @@ function ResetInputFull({ disabled, type, value, onCHange }: IInputForm) {
       autoComplete="off"
       value={value}
       name="Name" // dựa vào type để hiển thị đúng name
-      onChange={onCHange}
+      onChange={onChange}
       placeholder="First"
     />
   );
 }
 
-export default ResetInputFull;
+export default InputForm;

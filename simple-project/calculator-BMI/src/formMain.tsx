@@ -1,5 +1,6 @@
 import { SetStateAction, useState } from "react";
 import "./formMain.css";
+import InputForm from "./resetInputFull";
 
 let NextId = 1;
 function FormMain() {
@@ -69,66 +70,13 @@ function FormMain() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Personal Information Form</h1>
-      <input
-        disabled={arrayForm.length === 3}
-        type="text"
-        autoComplete="off"
-        value={name}
-        name="Name"
-        onChange={handleInput}
-        placeholder="First"
+      <InputForm disabled={isDisable} value={name} type="text" onChange={handleInput} name="name"/>
+      <InputForm disabled={isDisable} value={date} type="date" onChange={handleInputDate} name="date of birth"/>
+      <InputForm disabled={isDisable} value={home} type="text" onChange={handleInputHome} name="home"/>
+      <InputForm disabled={isDisable} value={email} type="text" onChange={handleInputEmail} name="email"/>
+      <InputForm disabled={isDisable} value={mobile} type="text" onChange={handleInputMobile} name="mobile"/>
+      <InputForm disabled={isDisable} value={address} type="text" onChange={handleInputAddress} name="address"
       />
-      {/* {ResetInputFull} */}
-      <input
-        disabled={arrayForm.length === 3}
-        type="date"
-        autoComplete="off"
-        value={date}
-        name="Name"
-        onChange={handleInputDate}
-        placeholder="Date of Birth"
-      />
-      {/* {ResetInputFull} */}
-      <input
-        disabled={arrayForm.length === 3}
-        type="text"
-        autoComplete="off"
-        value={email}
-        name="email"
-        onChange={handleInputEmail}
-        placeholder="Email"
-      />
-      {/* {ResetInputFull} */}
-      <input
-        disabled={arrayForm.length === 3}
-        type="text"
-        autoComplete="off"
-        value={address}
-        name="FirstName"
-        onChange={handleInputAddress}
-        placeholder="Address"
-      />
-      {/* {ResetInputFull} */}
-      <input
-        disabled={arrayForm.length === 3}
-        type="text"
-        autoComplete="off"
-        value={home}
-        name="home"
-        onChange={handleInputHome}
-        placeholder="Home Telephone Number"
-      />
-      {/* {ResetInputFull} */}
-      <input
-        disabled={arrayForm.length === 3}
-        type="text"
-        autoComplete="off"
-        value={mobile}
-        name="home"
-        onChange={handleInputMobile}
-        placeholder="Mobile Number"
-      />
-      {/* {ResetInputFull} */}
       <button
         disabled={email === "" || isDisable}
         onClick={() =>
