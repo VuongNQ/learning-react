@@ -4,63 +4,50 @@ import InputForm from "./resetInputFull";
 
 let NextId = 1;
 function FormMain() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [home, setHome] = useState("");
-  const [date, setDate] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [text, setText] = useState({
+    name: "",
+    date: "",
+    home: "",
+    email: "",
+    mobile: "",
+    address: "",
+  })
   const [arrayForm, setArrayForm] = useState<Data[]>([]);
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
   };
-  const handleInput = (e: { target: { value: SetStateAction<string> } }) => {
-    setName(e.target.value);
-  };
-  const handleInputDate = (e: {
-    target: { value: SetStateAction<string> };
+  const handleInput = (e: {
+    target: {
+      name: string; value: SetStateAction<string>
+    }
   }) => {
-    setDate(e.target.value);
+    const name = e.target.name;
+    const value = e.target.value;
+    setText((prev) => {
+      return { ...prev, [name]: value }
+    })
   };
-  const handleInputEmail = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setEmail(e.target.value);
-  };
-  const handleInputAddress = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setAddress(e.target.value);
-  };
-  const handleInputHome = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setHome(e.target.value);
-  };
-  const handleInputMobile = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setMobile(e.target.value);
-  };
-  const handleSend = ({ name, email, address, home, date, mobile }: Data) => {
-    setName("");
-    setEmail("");
-    setAddress("");
-    setHome("");
-    setDate("");
-    setMobile("");
-    setArrayForm([
-      ...arrayForm,
+  const { email, name, date, home, mobile, address } = text;
+  const handleSend = () => {
+    setText({
+      name: "",
+      date: "",
+      home: "",
+      email: "",
+      mobile: "",
+      address: "",
+    })
+    setArrayForm(
+      [...arrayForm,
       {
         id: NextId++,
         name: name,
-        email: email,
-        address: address,
         date: date,
         home: home,
+        email: email,
         mobile: mobile,
-      },
-    ]);
+        address: address,
+      }])
   };
 
   const handleClose = (id: number) => {
@@ -70,18 +57,16 @@ function FormMain() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Personal Information Form</h1>
-      <InputForm disabled={isDisable} value={name} type="text" onChange={handleInput} name="name"/>
-      <InputForm disabled={isDisable} value={date} type="date" onChange={handleInputDate} name="date of birth"/>
-      <InputForm disabled={isDisable} value={home} type="text" onChange={handleInputHome} name="home"/>
-      <InputForm disabled={isDisable} value={email} type="text" onChange={handleInputEmail} name="email"/>
-      <InputForm disabled={isDisable} value={mobile} type="text" onChange={handleInputMobile} name="mobile"/>
-      <InputForm disabled={isDisable} value={address} type="text" onChange={handleInputAddress} name="address"
+      <InputForm disabled={isDisable} value={text.name} type="text" onChange={handleInput} placeholder="Name" name="name" />
+      <InputForm disabled={isDisable} value={text.date} type="date" onChange={handleInput} placeholder="Date" name="date" />
+      <InputForm disabled={isDisable} value={text.home} type="text" onChange={handleInput} placeholder="Home" name="home" />
+      <InputForm disabled={isDisable} value={text.email} type="text" onChange={handleInput} placeholder="Email" name="email" />
+      <InputForm disabled={isDisable} value={text.mobile} type="text" onChange={handleInput} placeholder="Mobile" name="mobile" />
+      <InputForm disabled={isDisable} value={text.address} type="text" onChange={handleInput} placeholder="Address" name="address"
       />
       <button
-        disabled={email === "" || isDisable}
-        onClick={() =>
-          handleSend({ id: 1, name, email, address, home, date, mobile })
-        }
+        disabled={text.email === "" || isDisable}
+        onClick={handleSend}
         className="send"
         type="submit"
       >
@@ -101,14 +86,13 @@ function FormMain() {
                   }}
                 >
                   <h5 style={{ marginLeft: "12rem" }}>Infomation</h5>
-                  {isDisable ? null : (
-                    <button
-                      style={{ marginLeft: "9rem" }}
-                      onClick={() => handleClose(item.id)}
-                    >
-                      X
-                    </button>
-                  )}
+                  <button
+                    disabled={isDisable}
+                    style={{ marginLeft: "9rem" }}
+                    onClick={() => handleClose(item.id)}
+                  >
+                    X
+                  </button>
                 </div>
                 <label className="Name" htmlFor="">
                   Name: {""}
