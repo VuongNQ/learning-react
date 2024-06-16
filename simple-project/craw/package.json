@@ -1,0 +1,16 @@
+{
+  "name": "craw",
+  "version": "1.0.0",
+  "description": "check",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crawler": "^2.0.0",
+    "jsdom": "^24.1.0"
+  }
+}
