@@ -18,7 +18,8 @@ function FormMain() {
   };
   const handleInput = (e: {
     target: {
-      name: string; value: SetStateAction<string>
+      name: string; 
+      value: SetStateAction<string>
     }
   }) => {
     const name = e.target.name;
