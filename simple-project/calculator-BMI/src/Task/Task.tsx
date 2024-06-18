@@ -1,4 +1,5 @@
-import React, { useReducer, useState, SetStateAction } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useReducer, useState, SetStateAction, useCallback } from 'react';
 interface DataTs {
   id: number
   title: string
@@ -9,6 +10,7 @@ interface DataTs {
 // eslint-disable-next-line react-refresh/only-export-components
 
 let nextId = 3;
+// eslint-disable-next-line react-refresh/only-export-components
 export const initialTasks: DataTs = [
   { id: 0, title: 'Visit Kafka Museum', done: true },
   { id: 1, title: 'Watch a puppet show', done: false },
@@ -35,14 +37,18 @@ export default function Task() {
       return { ...prev, [name]: value }
     })
   };
-  const handleSetAdd = (text: { first: string; }) => {
-    setText({ first: "" })
+  {/* useCallback */ }
+  const handleSetAdd = useCallback(() => {
+    setText({ first: "" });
     dispatch({
       type: "add",
       id: nextId++,
-      text: text
+      text: text.first
     })
-  }
+    console.log(initialReducer, initialTasks)
+  }, [initialReducer])
+
+
   const handleEdit = () => {
 
   }
@@ -58,7 +64,7 @@ export default function Task() {
       <div style={{ display: "flex", alignItems: "center" }}>
         {/* Add task */}
         <input type="text" value={text.first} onChange={handleOnchange} name="first" placeholder='first' />
-        <button type='submit' onClick={() => handleSetAdd(text)}>Add</button>
+        <button type='submit' onClick={handleSetAdd}>Add</button>
       </div>
       <div>
         <ul>
@@ -68,8 +74,8 @@ export default function Task() {
                 <li style={{ display: 'flex', alignItems: "center" }} key={index}>
                   <span>
                     Name: {""}
-                  </span>
                   {item.title}
+                  </span>
                   <input type="checkbox" />
                   <button onClick={handleEdit}>edit</button>
                   <button onClick={() => handleDelete(item.id)}>delete</button>
@@ -94,7 +100,7 @@ export function initialReducer(tasks, action) {
       }
     ]
   } else if (action.type === 'delete') {
-    return tasks.filter((t: { id: any; }) => t.id !== action.id);
+    return tasks.filter((t) => t.id !== action.id);
   } else {
     throw Error('Unknown action: ' + action.type);
   }
