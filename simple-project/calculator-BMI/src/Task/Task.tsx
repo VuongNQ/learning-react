@@ -1,28 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useReducer, useState, SetStateAction, useCallback } from 'react';
-interface DataTs {
-  id: number
-  title: string
-  done: boolean
-}
-
 
 // eslint-disable-next-line react-refresh/only-export-components
 
-let nextId = 3;
+let nextId = 0;
 // eslint-disable-next-line react-refresh/only-export-components
-export const initialTasks: DataTs = [
-  { id: 0, title: 'Visit Kafka Museum', done: true },
-  { id: 1, title: 'Watch a puppet show', done: false },
-  { id: 2, title: 'Lennon Wall pic', done: false },
-];
-
+export const initialTasks = [
+  {
+    id: 0,
+    title: "",
+    done: true
+  }
+]
 export default function Task() {
   const [tasks, dispatch] = useReducer(initialReducer, initialTasks);
   const [text, setText] = useState({
     first: "",
   });
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
   }
   const handleOnchange = (e: {
@@ -31,23 +26,33 @@ export default function Task() {
       value: SetStateAction<string>
     }
   }) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setText((prev) => {
-      return { ...prev, [name]: value }
+    setText({
+      ...text,
+      [e.target.name] : e.target.value
     })
   };
   {/* useCallback */ }
+  { /* 
+const handleSetAdd = useCallback(() => {
+  setText({ first: "" });
+  dispatch({
+    type: "add",
+    id: nextId++,
+    text: first
+  })
+  console.log(initialReducer, initialTasks)
+}, [tasks])
+*/ }
+const textN = text.first;
   const handleSetAdd = useCallback(() => {
     setText({ first: "" });
     dispatch({
       type: "add",
       id: nextId++,
-      text: text.first
+      text: textN
     })
-    console.log(initialReducer, initialTasks)
-  }, [initialReducer])
-
+    console.log(initialReducer)
+  },[tasks])
 
   const handleEdit = () => {
 
@@ -74,9 +79,9 @@ export default function Task() {
                 <li style={{ display: 'flex', alignItems: "center" }} key={index}>
                   <span>
                     Name: {""}
-                  {item.title}
                   </span>
-                  <input type="checkbox" />
+                  {item.id}
+                  {item.title}
                   <button onClick={handleEdit}>edit</button>
                   <button onClick={() => handleDelete(item.id)}>delete</button>
                 </li>
