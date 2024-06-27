@@ -1,28 +1,30 @@
-import { useState } from 'react';
-import './form.css';
-import { dataList } from './data';
-import TaskList from './TaskList';
+import { useState } from "react";
+import { dataList } from "./data";
+import "./form.css";
+import TaskList from "./TaskList";
 
 const FormSection = () => {
   const [tasks, setTask] = useState(dataList);
-  const handlechangeTask = (task : any) => {
-     setTask(
+  const handlechangeTask = (task: any) => {
+    setTask(
       tasks.map((t) => {
-      if (t.id === task.id) {
-        return task;
-      } else {
-        return t;
-      }
-     }))
-  }
-  
-  return (
-    <>
-      <TaskList tasks={tasks}
-      onChangeTask={handlechangeTask} item={undefined} onChange={undefined}      />
-    </>
+        if (t.id === task.id) {
+          return task;
+        } else {
+          return t;
+        }
+      })
+    );
+  };
 
-  )
+  return (
+    <TaskList
+      tasks={tasks}
+      onChangeTask={handlechangeTask}
+      item={undefined}
+      onChange={undefined}
+    />
+  );
 };
 
 export default FormSection;
