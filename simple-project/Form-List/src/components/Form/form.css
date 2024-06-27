@@ -1,0 +1,78 @@
+form {
+  height: 100%;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.titleName {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+}
+
+span {
+  display: flex;
+  justify-content: start;
+}
+
+.edit {
+  background-color: #fff;
+  border: none;
+  right: 7px;
+  position: absolute;
+}
+
+strong {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.button {
+  padding: 8px 8px;
+  border: none;
+  background-color: turquoise;
+  border-radius: 6px;
+  color: #000;
+  font-weight: 700;
+  margin-left: 1rem;
+  &:hover {
+    background-color: brown;
+    color: #fff;
+  };
+}
+
+.textlist {
+  position: absolute;
+}
+
+.save {
+  background-color: darkgreen;
+  border-radius: 6px;
+  color: #fff;
+  margin-top: 1rem;
+  margin-left: 9rem;
+}
+
+.cancel {
+  width: 30%;
+  background-color: red;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  margin-top: 1rem;
+  position: relative;
+  top: 44px;
+  padding: 2.3px;
+  margin-left: 5rem;
+}
