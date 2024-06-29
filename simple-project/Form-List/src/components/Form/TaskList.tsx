@@ -15,7 +15,7 @@ export default function TaskList({ tasks, onChangeTask }: TaskTs) {
           {
             tasks.map((item: { id: Key | null | undefined; }) => {
               return (
-                <div className="col" key={item.id} >
+                <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={item.id} >
                   <Task item={item} onChange={onChangeTask} tasks={undefined} onChangeTask={undefined} />
                 </div>
               )
@@ -30,23 +30,24 @@ export default function TaskList({ tasks, onChangeTask }: TaskTs) {
 function Task({ item, onChange }: TaskTs) {
   const [isEditing, setIsEditing] = useState(false);
   const [isActive, setIsActive] = useState(false);
-  const [isCancel, setIsCancel] = useState(true)
   let taskContent;
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
-  }
   const onMouseHover = () => {
     setIsActive(true)
   }
   const onMouseLeave = () => {
     setIsActive(false)
   }
+  const save =
+    (
+      isActive ?
+        <button className="save" onClick={() => setIsEditing(false)}>Save</button> : null
+    )
   const cancel =
-  (
-    isActive ? 
-      <button className="cancel" onClick={() => setIsCancel(false)}>Cancel</button>
-       : null
-  )
+    (
+      isActive ?
+        <button className="cancel" onClick={() => setIsEditing(false)}>Cancel</button>
+        : null
+    )
   const textList =
     (
       isActive ?
@@ -102,7 +103,9 @@ function Task({ item, onChange }: TaskTs) {
               mobile: e.target.value
             })
           }} />
+          {/* save and cancel */}
           {cancel}
+          {save}
         </div>
       </>
     )
@@ -148,14 +151,11 @@ function Task({ item, onChange }: TaskTs) {
       </>
     )
   }
-  const save = <button className="save" onClick={() => setIsEditing(false)}>Save</button>
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label className="label" onMouseEnter={onMouseHover} >
-        {taskContent}
-        {/* save */}
-        {save}
-      </label>
-    </form>
+    <div className="label" onMouseEnter={onMouseHover} >
+      {taskContent}
+      {/* save */}
+    </div>
   )
 }
