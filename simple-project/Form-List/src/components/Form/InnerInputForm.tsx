@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { listData } from "./data";
+import { listData } from "./mockup";
 
 export interface InnerInput {
   col: "col col-lg-4 col-sm-5 col-xs-12";
